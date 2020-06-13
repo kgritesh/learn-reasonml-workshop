@@ -44,12 +44,13 @@ module MyList: {
    */
   let filter: ('a => bool, list('a)) => list('a);
 } = {
-  /* TODO */
-  let map = (f, lst) => failwith("For you to implement");
-  /* TODO */
-  let iter = (f, lst) => failwith("For you to implement");
-  /* TODO */
-  let filter = (f, lst) => failwith("For you to implement");
+  let map = (f, lst) => List.map(f, lst);
+  let iter = (f, lst) => List.iter(f, lst);
+  let filter = (f, lst) => List.fold_left((cmbList, a) => 
+    switch(f(a)) {
+      | true => cmbList @ [a];
+      | false => cmbList
+    }, [], lst) ;
 };
 
 /*
